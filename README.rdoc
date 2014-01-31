@@ -5,3 +5,15 @@ This plugin is for provide Estimation features for redmine.
 This plugin I wrote just for selft using. If you want to get it better don't hesitate and do it!
 
 It's free to use.
+
+= Installation
+
+To install this plugin you need to clone this repository to your redmine/plugins folder
+
+<tt>redmine/plugins$ git clone https://github.com/estatic/Redmine_Estamation estamation</tt>
+
+Then go to redmine root folder and run following command:
+
+<tt>bundle exec rake redmine:plugins:migrate RAILS_ENV=production</tt>
+
+That's it. Now restart your Redmine instance and get in to browser to check Estamation!
