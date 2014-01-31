@@ -10,7 +10,7 @@ It's free to use.
 
 To install this plugin you need to clone this repository to your redmine/plugins folder
 
-<tt>redmine/plugins$ git clone https://github.com/estatic/Redmine_Estamation estamation</tt>
+<tt>redmine/plugins$ git clone https://github.com/estatic/estamation.git</tt>
 
 Then go to redmine root folder and run following command:
 

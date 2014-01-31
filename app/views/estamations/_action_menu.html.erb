@@ -1,6 +1,5 @@
 <div class="contextual">
 <%= link_to l(:button_update), estamation_edit_path(@estamation), :onclick => 'showAndScrollTo("update", "estamation_notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit) if @estamation.editable? %>
-<%= link_to l(:button_estamation_entry), new_estamation_entry_path(@estamation), :class => 'icon icon-time-add' if @estamation.entryble? %>
 <%= watcher_link(@estamation, User.current) %>
 <%= link_to l(:button_delete), estamation_path(@estamation), :data => {:confirm => l(:text_estamations_destroy_confirmation)}, :method => :delete, :class => 'icon icon-del' if @estamation.editable? %>
 </div>
