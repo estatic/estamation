@@ -1,0 +1,12 @@
+<%= "Estamation: #{estamation.title} ##{estamation.id}" %>
+<%= estamation_url %>
+
+----------------------------------------
+<%= estamation.description %>
+
+<% if estamation.attachments.any? -%>
+---<%= l(:label_attachment_plural).ljust(37, '-') %>
+<% estamation.attachments.each do |attachment| -%>
+<%= attachment.filename %> (<%= number_to_human_size(attachment.filesize) %>)
+<% end -%>
+<% end -%>

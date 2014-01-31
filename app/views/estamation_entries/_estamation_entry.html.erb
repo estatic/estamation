@@ -1,0 +1,15 @@
+<div class="details">
+  <p class="author">
+    <%= authoring estamation_entry.created_at, estamation_entry.user %>.
+    <% if estamation_entry.created_at != estamation_entry.updated_at %>
+      <%= l(:label_updated_time, time_tag(estamation_entry.updated_at)).html_safe %>.
+    <% end %>
+  </p>
+  <div class="description">
+    <p><strong><%=l(:field_description)%></strong></p>
+    <div class="wiki">
+    <%= textilizable estamation_entry, :note, :attachments => estamation_entry.attachments %>
+    </div>
+  </div>
+  <%= link_to_attachments estamation_entry, :thumbnails => true %>
+</div>

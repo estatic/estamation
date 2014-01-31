@@ -1,0 +1,15 @@
+# English strings go here for Rails i18n
+ru:
+  # my_label: "My label"
+  field_estamation_status: "Статус"
+  field_link: "Ссылка на проект"
+  field_issue_priority: "Приоритет"
+  field_actual_due: "Актуально До"
+  notice_estamation_successful_updated: "Оценка успешно обновлена"
+  notice_estamation_successful_created: "Оценка успешно создана"
+  button_estamation_entry: "Добавить оценку"
+  notice_estamation_successful_create: "Оценка успешно создана"
+  field_note: "Заметка"
+  field_hours_min: "Минимальная оценка в часах"
+  field_hours_max: "Максимальная оценка в часах"
+  notice_estamation_entry_successful_create: "Оценочная заметка успешно создана"

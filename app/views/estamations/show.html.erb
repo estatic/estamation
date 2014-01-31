@@ -1,0 +1,60 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'estamation_style', :plugin => 'estamation' %>
+<% end %>
+<%= render :partial => 'action_menu' %>
+<h2><%= t(:Estimate)%> <%= @estamation.id %></h2>
+
+<div class="details">
+  <div class="subject">
+  <%= @estamation.title %>
+  </div>
+  <p class="author">
+    <%= authoring @estamation.created_at, @estamation.user %>.
+    <% if @estamation.created_at != @estamation.updated_at %>
+      <%= l(:label_updated_time, time_tag(@estamation.updated_at)).html_safe %>.
+    <% end %>
+  </p>
+  
+  <table class="attributes">
+  <%= issue_fields_rows do |rows|
+    rows.left l(:field_status), h(@estamation.estamation_status), :class => 'status'
+    
+    if @estamation.editable?
+      rows.left l(:field_link), link_to(@estamation.link,@estamation.link), :class => 'link'
+    end
+    unless @estamation.actual_due.nil?
+      rows.right l(:field_actual_due), format_date(@estamation.actual_due), :class => 'actual_due'
+    end
+
+  end %>
+  </table>
+  <% if @estamation.description? || @estamation.attachments.any? -%>
+    <hr />
+    <% if @estamation.description? %>
+    <div class="description">
+      <p><strong><%=l(:field_description)%></strong></p>
+      <div class="wiki">
+      <%= textilizable @estamation, :description, :attachments => @estamation.attachments %>
+      </div>
+    </div>
+    <% end %>
+    <%= link_to_attachments @estamation, :thumbnails => true %>
+  <% end -%>
+</div>
+&nbsp;
+<% if @estamation.estamation_entries.all.size!=0 %>
+  <h3>Entries</h3>
+  <% @estamation.estamation_entries.all.each do |estamation_entry| %>
+    <div class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <%= render estamation_entry %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="details">
+  <h2>Add Entry</h2>
+  <%= form_for [@estamation,@newentry], :url => estamation_entry_create_path(@estamation), :html => {:id => 'estamation-form', :multipart => true} do |f| %>
+    <%= render 'estamation_entries/form', :locals => {:f => f} %>
+    <%= submit_tag l(:button_create) %>
+  <% end %>
+</div>

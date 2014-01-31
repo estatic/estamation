@@ -1,0 +1,14 @@
+<h2>Edit Estamation <%= @estamation.title %></h2>
+
+<%= labelled_form_for @estamation, :url => estamation_update_path(@estamation),
+                             :html => {:id => 'estamation-form', :multipart => true} do |f| %>
+  <%= error_messages_for 'estamation' %>
+  <div class="box tabular">
+    <div id="all_attributes">
+  <%= render 'estamations/form', :locals => {:f => f} %>
+  <%= submit_tag l(:button_save) %>
+</div>
+</div>
+<% end %>
+
+<%= javascript_tag "$('#estamation_title').focus();" %>

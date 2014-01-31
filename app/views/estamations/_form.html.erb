@@ -1,0 +1,70 @@
+
+
+<%= labelled_fields_for :estamation, @estamation do |f| %>
+  <%= f.hidden_field :user_id %>
+  <p>
+    <%= f.text_field :title, :required => true %>
+  </p>
+  <p>
+    <%= f.label_for_field :description %>
+    <%= content_tag 'span', :id => "estamation_description_and_toolbar" do %>
+      <%= f.text_area :description,
+                     :cols => 60,
+                     :rows => (@estamation.description.blank? ? 10 : [[10, @estamation.description.length / 50].max, 100].min),
+                     :accesskey => accesskey(:edit),
+                     :class => 'wiki-edit',
+                     :no_label => true %>
+    <% end %>
+    <%= wikitoolbar_for 'estamation_description' %>
+  </p>
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+      <% if @estamation.project_id.nil? %>
+        <p>
+          <%= f.select :project_id, @projects.collect {|t| [t.name, t.id]}, {:required => true} %>
+        </p>
+      <% end %>
+      <p>
+        <%= f.select :estamation_status_id, EstamationStatus.all.collect {|t| [t.title, t.id]}, {:required => true} %>
+      </p>
+      <p>
+        <%= f.select :issue_priority_id, IssuePriority.active.collect {|t| [t.name, t.id]}, {:required => true} %>
+      </p>
+    </div>
+    <div class="splitcontentright">
+      <% if User.current.id==@estamation.user_id %>
+        <p>
+          <%= f.text_field :link %>
+        </p>
+      <% end %>
+
+    
+      <p>
+        <%= f.text_field :actual_due %>
+        <%= calendar_for('estamation_actual_due') %>
+      </p>
+    </div>
+  </div>
+  <div>&nbsp;</div>
+  <p id="attachments_form">
+    <label>
+      <%= l(:label_attachment_plural) %>
+    </label>
+    <%= render :partial => 'attachments/form', :locals => {:container => @issue} %>
+  </p>
+  <p id="watchers_form">
+    <label>
+      <%= l(:label_issue_watchers) %>
+    </label>
+    <span id="watchers_inputs">
+      <%= watchers_checkboxes(@estamation, @available_watchers) %>
+    </span>
+    <span class="search_for_watchers">
+      <%= link_to l(:label_search_for_watchers),
+              {:controller => 'watchers', :action => 'new', :project_id => @estamation.project},
+              :remote => true,
+              :method => 'get' %>
+    </span>
+  </p>
+
+<% end %>

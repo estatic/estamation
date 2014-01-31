@@ -1,0 +1,17 @@
+# English strings go here for Rails i18n
+en:
+  # my_label: "My label"
+  field_estamation_status: "Status"
+  field_link: "Link to project"
+  field_issue_priority: "Priority"
+  field_actual_due: "Actual Due"
+  notice_estamation_successful_updated: "Estamation Successfully updated"
+  notice_estamation_successful_created: "Estamation Successfully created"
+  button_estamation_entry: "Add Estamation Entry"
+  notice_estamation_successful_create: "Estamation Successfully created"
+  field_note: "Note"
+  field_hours_min: "Minimal Estimate in Hours"
+  field_hours_max: "Maximal Estimate in Hours"
+  notice_estamation_entry_successful_create: "Estamation Entry successfully created"
+  text_estamation_added: "Estamation added"
+  text_estamation_entry_added: "New Estatation Entry added"

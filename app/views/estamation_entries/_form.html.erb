@@ -1,0 +1,29 @@
+<%= labelled_fields_for :estamation_entry, @newentry do |f| %>
+  <%= f.hidden_field :user_id %>
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+      <%= f.text_field :hours_min %>
+    </div>
+    <div class="splitcontentright">
+      <%= f.text_field :hours_max %>
+    </div>
+  </div>
+  <p>
+    <%= f.label_for_field :note %>
+    <%= content_tag 'span', :id => "entry_note_and_toolbar" do %>
+      <%= f.text_area :note,
+                     :cols => 60,
+                     :rows => (@newentry.note.blank? ? 10 : [[10, @newentry.note.length / 50].max, 100].min),
+                     :accesskey => accesskey(:edit),
+                     :class => 'wiki-edit',
+                     :no_label => true %>
+    <% end %>
+    <%= wikitoolbar_for 'entry_note' %>
+  </p>
+  <p id="attachments_form">
+    <label>
+      <%= l(:label_attachment_plural) %>
+    </label>
+    <%= render :partial => 'attachments/form', :locals => {:container => @issue} %>
+  </p>
+<% end %>

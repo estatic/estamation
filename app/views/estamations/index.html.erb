@@ -1,0 +1,39 @@
+<% content_for :header_tags do %>
+    <%= javascript_include_tag 'initial', :plugin => 'estamation' %>
+    <%= stylesheet_link_tag 'estamation_style', :plugin => 'estamation' %>
+<% end %>
+
+<div class="contextual">
+  <span>
+    <%= link_to 'Add New', { :action => 'add' }, :class => 'icon icon-add' %>
+  </span>
+</div>
+
+<h2>Estamations</h2>
+
+<%= form_tag({}) do -%>
+<%= hidden_field_tag 'back_url', url_for(params), :id => nil %>
+<div class="autoscroll">
+
+  <table class="list issues">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th><%= t(:title) %></th>
+        <th><%= t(:status)%></th>
+        <th><%= t(:user) %></th>
+      </tr>
+    </thead>
+  <% @estamations.each do |estamation| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td class="id">
+        <%= link_to estamation.id, get_estamation_path(estamation) %>
+      </td>
+      <td class="subject"><%= link_to estamation.title, get_estamation_path(estamation) %></td>
+      <td class="status"><%= link_to estamation.estamation_status, get_estamation_path(estamation) %></td>
+      <td class="assignied_to"><%= link_to estamation.user.name, get_estamation_path(estamation) %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<% end -%>

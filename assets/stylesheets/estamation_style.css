@@ -1,0 +1,9 @@
+.list_line_odd {
+    background-color: #e0f8f8;
+    padding: 2px 2px 2px 2px;
+}
+
+.list_line_even {
+    background-color: #f8b0f8;
+    padding: 2px 2px 2px 2px;
+}
