@@ -13,3 +13,5 @@ ru:
   field_hours_min: "Минимальная оценка в часах"
   field_hours_max: "Максимальная оценка в часах"
   notice_estamation_entry_successful_create: "Оценочная заметка успешно создана"
+  text_estamation_added: "Новая Оценка добавлена"
+  text_estamation_entry_added: "Новая Оценка от разработчика"

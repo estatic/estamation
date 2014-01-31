@@ -1,3 +1,7 @@
-= estamation
+= Redmine Estamation Plugin
 
-Description goes here
+This plugin is for provide Estimation features for redmine.
+
+This plugin I wrote just for selft using. If you want to get it better don't hesitate and do it!
+
+It's free to use.
