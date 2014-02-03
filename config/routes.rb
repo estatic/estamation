@@ -12,3 +12,5 @@ delete 'estamations/id', :to => 'estamations#destroys', :as => :estamation_delet
 
 get 'estamations/:id/entry/new', :to => 'estamation_entry#new', :as => :new_estamation_entry
 post 'estamations/:estamation_id/entry', :to => 'estamation_entry#create', :as => :estamation_entry_create
+
+get 'projects/:project_id/estamations', :to => 'estamation#index_w_project', :as => :project_estamation
