@@ -6,6 +6,10 @@
     <% end %>
   </p>
   <div class="description">
+    <div class="estimate">
+      <p><strong><%=l(:field_hours_min)%>:</strong><%=estamation_entry.hours_min%></p>
+      <p><strong><%=l(:field_hours_max)%>:</strong><%=estamation_entry.hours_max%></p>
+    </div>
     <p><strong><%=l(:field_description)%></strong></p>
     <div class="wiki">
     <%= textilizable estamation_entry, :note, :attachments => estamation_entry.attachments %>

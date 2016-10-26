@@ -9,9 +9,7 @@ class Estamation < ActiveRecord::Base
   
   acts_as_attachable :after_add => :attachment_added, :after_remove => :attachment_removed
   acts_as_watchable
-  acts_as_searchable :columns => ['title', "#{table_name}.description"],
-                     # sort by id so that limited eager loading doesn't break with postgresql
-                     :order_column => "#{table_name}.id"
+  acts_as_searchable :columns => ['title', "#{table_name}.description"]
   after_create :send_notification           
 
     def editable?

@@ -1,5 +1,5 @@
 class EstamationsController < ApplicationController
-  unloadable
+  #unloadable
   
   helper :watchers
   include WatchersHelper
@@ -9,8 +9,14 @@ class EstamationsController < ApplicationController
   include AttachmentsHelper
   
   def index
+    if params[:project_id].nil?
       @estamations = Estamation.all
-      logger.debug(@estamations)
+    else
+      logger.debug(params)
+      @project = Project.find(params[:project_id])
+      @estamations = Estamation.where({project_id: @project.id}).all
+    end
+
   end
   
   def index_w_project
@@ -66,7 +72,6 @@ class EstamationsController < ApplicationController
           format.html {
               flash[:notice] = l(:notice_estamation_successful_updated, :id => view_context.link_to("##{@estamation.id}", estamation_path(@estamation), :title => @estamation.title))
               unless @estamation.project.nil?
-                attrs = {}
                 redirect_to project_estamation_path(@estamation.project, @estamation)
               else
                 redirect_to estamation_path(@estamation)
@@ -88,7 +93,8 @@ class EstamationsController < ApplicationController
       if params[:project_id].nil?
           @estamation = Estamation.find(params[:id])
       else
-          @estamation = Estamation.where({:id => params[:id], :project_id => params[:project_id]}).first
+        @project = Project.find(params[:project_id])
+          @estamation = Estamation.where({:id => params[:id], :project_id => @project.id}).first
       end
   end
 end

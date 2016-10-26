@@ -9,6 +9,6 @@ Redmine::Plugin.register :estamation do
   permission :estamation, { :estamations => [:index, :add, :edit] }, :public => false
   menu :top_menu, :estamation, { :controller => 'estamations', :action => 'index' }, :caption => 'Estamations', :before => :help,
         :if => Proc.new{User.current.allowed_to?({:controller => 'estamations', :action => 'index'}, nil, {:global => true})}
-  menu :project_menu, :estamation, { :controller => 'estamations', :action => 'index' }, :caption => 'Estimation', :after => :activity, :param => :project_id, 
+  menu :project_menu, :estamation, { :controller => 'estamations', :action => 'index' }, :caption => 'Estimation', :after => :activity, :param => :project_id,
         :if => Proc.new{User.current.allowed_to?({:controller => 'estamations', :action => 'index'}, nil, {:global => true})}
 end

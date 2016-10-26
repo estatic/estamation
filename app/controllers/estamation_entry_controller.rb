@@ -3,7 +3,7 @@ class EstamationEntryController < ApplicationController
 
   def create
       @estamation = Estamation.find(params[:estamation_id])
-      @newentry = @estamation.estamation_entries.new(params[:estamation_entry])
+      @newentry = @estamation.estamation_entries.create(entry)
       @newentry.save_attachments(params[:attachments] || (params[:estamation_entry] && params[:estamation_entry][:uploads]))
       
       respond_to do |format|
@@ -23,5 +23,10 @@ class EstamationEntryController < ApplicationController
           format.json { render json: @newentry.errors, status: :unprocessable_entity }
         end
       end
+  end
+
+  private
+  def entry
+    params.require(:estamation_entry).permit(:note, :private, :hours_min, :hours_max, :estamation, :user)
   end
 end
