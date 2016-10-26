@@ -1,8 +1,8 @@
 Redmine::Plugin.register :estamation do
   name 'Estamation plugin'
   author 'Ivan Grunev'
-  description 'This is a plugin for Redmine 2.4. This plugin allows to create estimation for projects and convert estimation to project'
-  version '0.0.3'
+  description 'This is a plugin for Redmine 3.3. This plugin allows to create estimation for projects and convert estimation to project'
+  version '0.0.4'
   url 'https://github.com/estatic/Redmine_Estamation'
   author_url 'https://github.com/estatic'
   
