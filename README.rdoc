@@ -1,6 +1,6 @@
 = Redmine Estamation Plugin
 
-This plugin is for provide Estimation features for redmine.
+This plugin is for provide Estimation features for redmine. It allows to create standalone estimations for (as an example) sales managers. It will be hide from everyone not allowed to see these estimations.
 
 This plugin I wrote just for selft using. If you want to get it better don't hesitate and do it!
 
@@ -17,3 +17,10 @@ Then go to redmine root folder and run following command:
 <tt>bundle exec rake redmine:plugins:migrate RAILS_ENV=production</tt>
 
 That's it. Now restart your Redmine instance and get in to browser to check Estamation!
+
+= Using
+
+You have two ways to create estimations.
+
+1. On the top bar of page you can click on Estamations link and then you can get to List of estimations. On this page you can add new estimation.
+2. Second way is to get to project page and click on Estimations tab.
